@@ -34,7 +34,7 @@ namespace LibraryManagementSystem.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            return View();
+            return View(libraryMember);
         }
 
         public async Task<IActionResult> Edit(int? id)
@@ -94,7 +94,7 @@ namespace LibraryManagementSystem.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var libraryMember= await _context.LibraryMembers.FirstOrDefaultAsync(lm => lm.LibraryMemberId == id);
             if (libraryMember == null)

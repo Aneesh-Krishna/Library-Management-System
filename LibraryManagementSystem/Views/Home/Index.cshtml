@@ -1,8 +1,58 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Library Management System";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="jumbotron text-center bg-primary text-white">
+    <h1 class="display-4">Welcome to the Library Management System</h1>
+    <p class="lead">Efficiently manage your library's books, members, and borrowing records.</p>
+    <hr class="my-4" />
+</div>
+
+<div class="container">
+    <div class="row mt-5">
+        <!-- Books Section -->
+        <div class="col-md-4">
+            <div class="card text-center shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h3>Books</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        View and manage the library's book collection, including adding new books, editing details, and keeping track of available copies.
+                    </p>
+                    <a asp-controller="Book" asp-action="Index" class="btn btn-primary">View Books</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Library Members Section -->
+        <div class="col-md-4">
+            <div class="card text-center shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h3>Library Members</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        Manage library members, including member registration, updating contact information, and viewing borrowing histories.
+                    </p>
+                    <a asp-controller="LibraryMember" asp-action="Index" class="btn btn-primary">View Members</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Borrowing Records Section -->
+        <div class="col-md-4">
+            <div class="card text-center shadow-sm">
+                <div class="card-header bg-dark text-white">
+                    <h3>Borrowing Records</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        Keep track of all borrowing transactions, including borrowed dates, due dates, and returned dates.
+                    </p>
+                    <a asp-controller="BorrowingRecord" asp-action="Index" class="btn btn-primary">View Records</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

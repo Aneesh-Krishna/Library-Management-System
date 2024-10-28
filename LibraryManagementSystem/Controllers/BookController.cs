@@ -23,11 +23,11 @@ namespace LibraryManagementSystem.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost, ActionName("Create")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Book book)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _context.Books.Add(book);
                 await _context.SaveChangesAsync();
@@ -52,7 +52,7 @@ namespace LibraryManagementSystem.Controllers
             return View(book);
         }
 
-        [HttpPost]
+        [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Book book)
         {
@@ -96,7 +96,7 @@ namespace LibraryManagementSystem.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var book = await _context.Books.FirstOrDefaultAsync(b => b.BookId==id);
             if(book==null)

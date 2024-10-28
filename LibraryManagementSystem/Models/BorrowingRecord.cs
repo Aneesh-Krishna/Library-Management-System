@@ -1,8 +1,13 @@
 ﻿
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
 namespace LibraryManagementSystem.Models
 {
     public class BorrowingRecord
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BorrowingRecordId { get; set; }
         public DateTime BorrowedDate { get; set; }
         public DateTime DueDate { get; set; }

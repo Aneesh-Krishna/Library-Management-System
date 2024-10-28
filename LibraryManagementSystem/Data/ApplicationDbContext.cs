@@ -18,13 +18,13 @@ namespace LibraryManagementSystem.Data
                 .HasOne(br  => br.LibraryMember)
                 .WithMany(b => b.BorrowingRecords)
                 .HasForeignKey(br => br.LibraryMemberId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<BorrowingRecord>()
                 .HasOne(br => br.Book)
                 .WithMany(b => b.BorrowingRecords)
                 .HasForeignKey(br => br.BookId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<BorrowingRecord>(entity =>
             {
@@ -54,6 +54,7 @@ namespace LibraryManagementSystem.Data
                 entity.Property(b => b.Title).IsRequired().HasMaxLength(50).HasColumnName("Title");
                 entity.Property(b => b.Author).IsRequired().HasMaxLength(100).HasColumnName("Author");
                 entity.Property(b => b.AvailableCopies).IsRequired().HasColumnName("Copies_Available");
+                entity.Property(b => b.PublicationDate).IsRequired(false);
                 entity.HasIndex(b => b.Title).IsUnique();
             });
 

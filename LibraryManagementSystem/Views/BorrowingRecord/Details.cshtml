@@ -1,0 +1,42 @@
+﻿@model LibraryManagementSystem.Models.BorrowingRecord
+
+@{
+    ViewData["Title"] = "Borrowing Record Details";
+}
+
+<h2>Borrowing Record Details</h2>
+
+<div class="card">
+    <div class="card-header">
+        <h4>Borrowing Record for @Model.Book.Title</h4>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Book Title</dt>
+            <dd class="col-sm-9">@Model.Book.Title</dd>
+
+            <dt class="col-sm-3">Library Member</dt>
+            <dd class="col-sm-9">@Model.LibraryMember.FullName</dd>
+
+            <dt class="col-sm-3">Borrowed Date</dt>
+            <dd class="col-sm-9">@Model.BorrowedDate.ToString("yyyy-MM-dd")</dd>
+
+            <dt class="col-sm-3">Due Date</dt>
+            <dd class="col-sm-9">@Model.DueDate.ToString("yyyy-MM-dd")</dd>
+
+            <dt class="col-sm-3">Returned Date</dt>
+            <dd class="col-sm-9">
+                @if (Model.ReturnedDate.HasValue)
+                {
+                    @Model.ReturnedDate.Value.ToString("yyyy-MM-dd")
+                }
+                else
+                {
+                    <span class="text-danger">Not Returned</span>
+                }
+            </dd>
+        </dl>
+        <a asp-action="ReturnBook" asp-route-id="@Model.BorrowingRecordId" class="btn btn-warning">Return</a>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
